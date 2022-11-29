@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "G:\\Ionosfera\\Ionosfera\\Ionosfera.csproj": {}
+    "C:\\Users\\REzquer\\source\\repos\\ionosphere\\Ionosfera\\Ionosfera\\Ionosfera.csproj": {}
   },
   "projects": {
-    "G:\\Ionosfera\\Ionosfera\\Ionosfera.csproj": {
+    "C:\\Users\\REzquer\\source\\repos\\ionosphere\\Ionosfera\\Ionosfera\\Ionosfera.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Ionosfera\\Ionosfera\\Ionosfera.csproj",
+        "projectUniqueName": "C:\\Users\\REzquer\\source\\repos\\ionosphere\\Ionosfera\\Ionosfera\\Ionosfera.csproj",
         "projectName": "Ionosfera",
-        "projectPath": "G:\\Ionosfera\\Ionosfera\\Ionosfera.csproj",
-        "packagesPath": "C:\\Users\\Ciasur\\.nuget\\packages\\",
-        "outputPath": "G:\\Ionosfera\\Ionosfera\\obj\\",
+        "projectPath": "C:\\Users\\REzquer\\source\\repos\\ionosphere\\Ionosfera\\Ionosfera\\Ionosfera.csproj",
+        "packagesPath": "C:\\Users\\REzquer\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\REzquer\\source\\repos\\ionosphere\\Ionosfera\\Ionosfera\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Ciasur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\REzquer\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
