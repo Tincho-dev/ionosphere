@@ -17,14 +17,53 @@ class Program
     static void Main(string[] args)
     {
         Rootobject results = new();
-        GetData();//must be async
+        //results = ConsultaUnDia();//must be async 
         Console.WriteLine(results.ToString());
-                                                  // results = NullearDatos(results);
-        /* foreach (var resultados in results.records)
-         {
-             Console.WriteLine(resultados.dt.Substring(0, 10) + ";" + resultados.dt.Substring(10) + "; " + resultados.fof2);
-         }*/
-        //Console.WriteLine(results.records[1].dt);
+        //Console.WriteLine(results.Records.Length);
+    }
+
+    public static Rootobject ConsultaUnDia()//error en la consulta, posiblemente mal escrita la url
+    {
+        var respuesta = new Rootobject();
+
+        //preparacion de los datos para la consulta
+        ArrayList jsonFormato = new ArrayList();
+        jsonFormato.Add("fecha;hora;fof2");
+        string station = "tuj2o";
+        string date_template = "{0}-{1}-{2}";
+        Console.WriteLine("Año: ");
+        int year = Int32.Parse(Console.ReadLine());
+        Console.WriteLine("mes: ");
+        int month = Int32.Parse(Console.ReadLine());
+        Console.WriteLine("dia: ");
+        int day = Int32.Parse(Console.ReadLine());
+
+
+        //loop de las consultas
+        
+                string since_date = String.Format(date_template, year, month, day);//YYYY-MM-DD
+                string since_hour = "00:00:00";//HH:MM:SS
+                string until_hour = "23:00:00";
+                string url = String.Format("http://ws-eswua.rm.ingv.it/ais.php/records/{0}_auto?filter=dt,{1}%20{2}&include+dt,{3}&order=dt", station, since_date, since_hour, station);
+                Console.WriteLine("Consultando...");
+
+                var client = new RestClient(url);
+                var request = new RestRequest();
+                var response = client.Execute(request);
+                
+                Console.WriteLine(response.StatusCode);
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    string rawResponse = response.Content;
+                    respuesta = JsonConvert.DeserializeObject<Rootobject>(rawResponse);
+
+                    foreach (var record in respuesta.Records)
+                    {
+                        //Guardar en DB
+                        Console.WriteLine(record.dt.Substring(0, 10) + ";" + record.dt.Substring(10) + "; " + record.fof2);
+                    }
+                }
+        return respuesta;
     }
 
     public static Rootobject GetData()
@@ -57,7 +96,7 @@ class Program
                 var request = new RestRequest();
                 var response = client.Execute(request);
 
-                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                if (response.StatusCode == HttpStatusCode.OK)
                 {
                     string rawResponse = response.Content;
                     respuesta = JsonConvert.DeserializeObject<Rootobject>(rawResponse);
